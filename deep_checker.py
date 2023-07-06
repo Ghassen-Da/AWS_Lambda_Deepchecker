@@ -5,7 +5,7 @@ import json
 import requests
 import subprocess
 
-def install(repo_name):
+def install_dependencies(repo_name):
     subprocess.run(['pip', 'install', '-r', f'{repo_name}/requirements.txt', '--target', '/tmp'])
 
 
@@ -17,10 +17,8 @@ from tensorflow.keras import datasets
   
 
 def check_repo(owner, repo_name, token, pr_number):
-    sys.path.append(f'/tmp')
-    install(repo_name)
-    print('hi1', os.getcwd())
-    print('hi2', os.listdir())
+    sys.path.append('/tmp')
+    install_dependencies(repo_name)
     json_config = open(f'{repo_name}/config.json')
     json_config = json.load(json_config)
     filename=json_config["fileName"]
@@ -44,4 +42,4 @@ def write_output_as_github_comment(owner, repo_name, token, pr_number):
    comment_github_url=f'https://api.github.com/repos/{owner}/{repo_name}/issues/{pr_number}/comments'
    print('url: ', comment_github_url)
    data=json.dumps({"body":log_data})
-   result=requests.post(comment_github_url, headers=headers, data=data)
+   requests.post(comment_github_url, headers=headers, data=data)

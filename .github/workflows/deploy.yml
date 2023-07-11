@@ -42,7 +42,7 @@ jobs:
     - name: Update Lambda code
       id: update-lambda
       env: 
-        IMAGE_URI: ${{ steps.build-image.outputs.image }}
+        IMAGE_URI: ${{ steps.build-image.outputs }}
       run:
         echo "hi"
         echo "$IMAGE_URI" 

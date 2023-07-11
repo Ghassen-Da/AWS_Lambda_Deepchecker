@@ -42,6 +42,7 @@ jobs:
     - name: Update Lambda code
       id: update-lambda
       env: 
-        IMAGE_URI: ${{steps.build-image.outputs.image}}
+        IMAGE_URI: ${{ steps.build-image.outputs.image }}
       run:
+        echo "$IMAGE_URI"
         aws lambda update-function-code --function-name arn:aws:lambda:ca-central-1:777647195753:function:deepchecker-handler --image-uri $IMAGE_URI

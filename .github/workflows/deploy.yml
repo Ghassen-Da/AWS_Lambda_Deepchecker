@@ -42,7 +42,7 @@ jobs:
     - name: Update Lambda code
       id: update-lambda
       env: 
-        IMAGE_URI: ${{ steps.build-image.outputs }}
+        IMAGE_URI: ${{ steps.build-image.env.ECR_REGISTRY }}/${{ steps.build-image.env.ECR_REPOSITORY }}:${{ steps.build-image.env.IMAGE_TAG }}
       run:
         echo "hi"
         echo "$IMAGE_URI" 

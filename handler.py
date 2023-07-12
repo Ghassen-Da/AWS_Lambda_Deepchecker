@@ -29,8 +29,8 @@ def handler(event, context):
      owner=data['pull_request']['head']['repo']['owner']['login']
      repo_name=data['pull_request']['head']['repo']['name'] 
      pr_number=data['number']
-  token=clone_repo(owner, repo_name)
-  deep_checker.check_repo(owner, repo_name, token, pr_number)
+     token=clone_repo(owner, repo_name)
+     deep_checker.check_repo(owner, repo_name, token, pr_number)
 
   return "return"
 

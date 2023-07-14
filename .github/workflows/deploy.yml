@@ -43,6 +43,7 @@ jobs:
     - name: Update Lambda code
       id: update-lambda
       env: 
-        IMAGE_URI: ${{ env.LAMBDA_IMAGE_URI }} 
+        IMAGE_URI: ${{ env.LAMBDA_IMAGE_URI }}
+        FUNCTION_NAME: ${{ secrets.FUNCTION_ARN }} 
       run: |
-        aws lambda update-function-code --function-name arn:aws:lambda:ca-central-1:777647195753:function:deepchecker-handler --image-uri $IMAGE_URI
+        aws lambda update-function-code --function-name $FUNCTION_NAME --image-uri $IMAGE_URI

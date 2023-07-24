@@ -660,7 +660,7 @@ def build_log_file_path(app_path, app_name):
     return os.path.join(log_dir_path, f'{app_name}.log')
 
 def file_logger(file_path, app_name):
-    logger = logging.getLogger(f'TheDeepCheckerrrrr: {app_name} Logs')
+    logger = logging.getLogger(f'TheDeepChecker: {app_name} Logs')
     logger.setLevel(logging.DEBUG)
     fh = logging.FileHandler(file_path)
     fh.setLevel(logging.DEBUG)

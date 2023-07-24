@@ -21,6 +21,10 @@ class NeuraTest(unittest.TestCase):
         checker = DeepChecker(name='deep_checker_result', data=data_under_test, model=model, buffer_scale=10)
         checker.run_full_checks()
         print('Test finished.')
+        log_file="deep_checker_result.log"
+        with open(log_file, 'rb') as log_file:
+            log_data = log_file.read().decode('utf-8')
+            print(log_data)
 
 if __name__ == '__main__':
     unittest.main()

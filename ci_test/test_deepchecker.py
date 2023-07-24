@@ -10,8 +10,9 @@ import data as data
 from tensorflow.keras import datasets
 import CNN_with_high_lr as module
 
-class NeuraTest(unittest.TestCase):
-    def test_neura(self):
+class DeepCheckerTest(unittest.TestCase):
+    
+    def test_deepchecker(self):
         expected_data="""2023-07-24 19:53:54,753 - TheDeepChecker: deep_checker_result Logs - WARNING - Loss at cold start is considered poor and problematic: relative error of 32862193.857
 2023-07-24 19:54:07,849 - TheDeepChecker: deep_checker_result Logs - WARNING - Conv. layer activation conv2d_7/relu are considered unstable with std of 0.25803529199566233 far from [0.5, 2.0]
 2023-07-24 19:54:13,822 - TheDeepChecker: deep_checker_result Logs - WARNING - Conv. layer activation conv2d_7/relu are considered unstable with std of 0.28929210100820324 far from [0.5, 2.0]
@@ -88,9 +89,24 @@ class NeuraTest(unittest.TestCase):
         log_file="deep_checker_result.log"
         with open(log_file, 'rb') as log_file:
             log_data = log_file.read().decode('utf-8')
+
+        differing_letters = []
+        min_length = min(len(log_data), len(expected_data))
+
+        for i in range(min_length):
+            if log_data[i] != expected_data[i]:
+                differing_letters.append(log_data[i])
+                if len(differing_letters) == 5:
+                    break
+
+        print("heyyyyyyy:".join(differing_letters))
+
+
         assert log_data==expected_data
         print('Test finished successfully.')
-            
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

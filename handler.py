@@ -37,7 +37,6 @@ def handler(event, context):
 
 # Repo full name is owner_name/repo_name
 def clone_repo(owner, repo_name):
-  print('My name is Ghassen Daoud') 
   # Get the installation ID
   url_to_get_installation_id=f'https://api.github.com/repos/{owner}/{repo_name}/installation'
   headers = {'Authorization': f'Bearer {encoded_jwt}', 'X-GitHub-Api-Version':'2022-11-28', 'Accept':'application/vnd.github+json'}

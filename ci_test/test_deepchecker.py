@@ -99,7 +99,8 @@ TheDeepChecker: deep_checker_result Logs - WARNING - The loss is no-or-slowly de
                 if len(differing_letters) == 5:
                     break
 
-        print("heyyyyyyy:".join(differing_letters))
+        print('hola')
+        print("".join(differing_letters))
 
 
         assert log_data==expected_data

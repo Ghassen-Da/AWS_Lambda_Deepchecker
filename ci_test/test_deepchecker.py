@@ -96,13 +96,13 @@ TheDeepChecker: deep_checker_result Logs - WARNING - The loss is no-or-slowly de
  
         for i in range(min_length):
             if log_data[i] != expected_data[i]:
-                differing_letters.append(log_data[i])
+                differing_letters.append(log_data[i+1])
                 if len(differing_letters) == 1:
                     break
 
         print('hola')
         print(log_data==expected_data)
-        print("".join(differing_letters))
+        print(" haha ".join(differing_letters))
 
 
         assert log_data==expected_data

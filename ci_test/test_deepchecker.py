@@ -89,7 +89,7 @@ class DeepCheckerTest(unittest.TestCase):
         log_file="deep_checker_result.log"
         with open(log_file, 'rb') as log_file:
             log_data = log_file.read().decode('utf-8')
-
+        print('log data file:', log_data)
         differing_letters = []
         min_length = min(len(log_data), len(expected_data))
 

@@ -91,18 +91,21 @@ TheDeepChecker: deep_checker_result Logs - WARNING - The loss is no-or-slowly de
             log_data = log_file.read().decode('utf-8')
         print('log data file:', log_data)
         print('expected data:', expected_data)
-        differing_letters = []
+        # Find the minimum length of the two strings
         min_length = min(len(log_data), len(expected_data))
- 
+        
+        # Iterate through the characters of both strings up to the minimum length
         for i in range(min_length):
             if log_data[i] != expected_data[i]:
-                differing_letters.append(log_data[i+1])
-                if len(differing_letters) == 1:
-                    break
-
-        print('hola')
-        print(log_data==expected_data)
-        print(" haha ".join(differing_letters))
+                print(f"Differing character at position {i}: '{log_data[i]}' and '{expected_data[i]}'")
+        
+        # If the strings have different lengths, print the extra characters in the longer string
+        if len(log_data) > min_length:
+            for i in range(min_length, len(log_data)):
+                print(f"Extra character in the first string at position {i}: '{log_data[i]}'")
+        elif len(expected_data) > min_length:
+            for i in range(min_length, len(expected_data)):
+                print(f"Extra character in the second string at position {i}: '{expected_data[i]}'")
 
 
         assert log_data==expected_data

@@ -24,7 +24,7 @@ jobs:
    
     - name: Run Tests
       run: |
-        python ci_test/test_deepchecker.py
+        PYTHONHASHSEED=0 python ci_test/test_deepchecker.py
 
   # cd:   
   #   name: Deploy on AWS

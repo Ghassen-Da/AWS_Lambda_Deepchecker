@@ -90,6 +90,7 @@ TheDeepChecker: deep_checker_result Logs - WARNING - The loss is no-or-slowly de
         with open(log_file, 'rb') as log_file:
             log_data = log_file.read().decode('utf-8')
         print('log data file:', log_data)
+        print('expected data:', expected_data)
         differing_letters = []
         min_length = min(len(log_data), len(expected_data))
  
@@ -100,6 +101,7 @@ TheDeepChecker: deep_checker_result Logs - WARNING - The loss is no-or-slowly de
                     break
 
         print('hola')
+        print(log_data==expected_data)
         print("".join(differing_letters))
 
 

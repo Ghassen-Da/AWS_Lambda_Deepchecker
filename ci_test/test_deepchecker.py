@@ -92,7 +92,7 @@ class DeepCheckerTest(unittest.TestCase):
         print('log data file:', log_data)
         differing_letters = []
         min_length = min(len(log_data), len(expected_data))
-
+ 
         for i in range(min_length):
             if log_data[i] != expected_data[i]:
                 differing_letters.append(log_data[i])
